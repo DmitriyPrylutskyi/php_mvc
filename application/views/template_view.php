@@ -47,8 +47,13 @@
                 <li><a href="/portfolio">Портфолио</a></li>
                 <li><a href="/contacts">Контакты</a></li>
                 <?php
+                $routes = explode('/', $_SERVER['REQUEST_URI']);
                 if ( $_SESSION['admin'] == "12345" ):
-                    echo '<li class="last"><a href="/admin/">Админ</a></li>';
+                    if ( $routes[1] == "admin" ) :
+                        echo '<li class="last"><a href="/admin/logout">Логаут</a></li>';
+                    else :
+                        echo '<li class="last"><a href="/admin/">Админ</a></li>';
+                    endif;
                 else :
                     echo '<li class="last"><a href="/login">Логин</a></li>';
                 endif;
